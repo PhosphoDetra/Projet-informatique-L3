@@ -21,17 +21,13 @@ public class Platform : MonoBehaviour
 
     }
 
-
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
     // Update is called once per frame
     void Update()
     {
-        
+        //si parfois la platform se retrouve en dessous d'un certain niveau elle est automatiquement détruite
+        if(transform.position.y < Camera.main.transform.position.y - 6.0f)
+        {
+            Destroy(gameObject);
+        }
     }
 }
