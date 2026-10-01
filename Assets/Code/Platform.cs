@@ -25,7 +25,7 @@ public class Platform : MonoBehaviour
     void Update()
     {
         //si parfois la platform se retrouve en dessous d'un certain niveau elle est automatiquement détruite
-        if(transform.position.y < Camera.main.transform.position.y - 6.0f)
+        if(transform.localPosition.y < -8.0f)
         {
             Destroy(gameObject);
         }

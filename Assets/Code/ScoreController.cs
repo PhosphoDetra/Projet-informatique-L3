@@ -6,29 +6,40 @@ public class ScoreController : MonoBehaviour
 
     public Transform player;
 
-    private TextMeshProUGUI scoreTxt;
-    private float topScore = 0.0f; //pour avoir en mémoire la hauteur max
+    private TMP_Text scoreTxt;
+    
+    private float score = 0.0f; //pour avoir en mémoire la hauteur max
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    void Awake()
     {
-        scoreTxt = GetComponent<TextMeshProUGUI>();
+        scoreTxt = GetComponent<TMP_Text>();
 
-        //init du score du joueur
-        if(player != null)
+        if(scoreTxt != null) 
         {
-            topScore = player.position.y;
+            UpdateScoreDisplay();
         }
     }
 
-    // Update is called once per frame
-    void Update()
+    // le Joueur appellera cette fonction quand le décor descend
+    public void AjouterScore(float points)
     {
-        //ont regarde si le joueur depasse la position de sont meilleure score si oui ont actualise le score
-        if(player != null && player.position.y > topScore)
+        score += points;
+        UpdateScoreDisplay();
+    }
+
+    // le Joueur appellera cette fonction quand il meurt
+    public void ResetScore()
+    {
+        score = 0.0f;
+        UpdateScoreDisplay();
+    }
+
+    private void UpdateScoreDisplay()
+    {
+        if (scoreTxt != null) 
         {
-            topScore = player.position.y;
-            scoreTxt.text = "Score: "+ Mathf.RoundToInt(topScore * 10.0f).ToString();
+        scoreTxt.text = "Score: " + Mathf.RoundToInt(score * 10.0f).ToString();
         }
     }
 }

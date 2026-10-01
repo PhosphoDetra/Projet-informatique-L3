@@ -8,6 +8,7 @@
         "**/.git": true,
         "**/.svn": true,
         "**/.hg": true,
+        "**/.jj": true,
         "**/.DS_Store": true,
         "**/Thumbs.db": true,
         "**/.vs": true,
@@ -75,5 +76,6 @@
         "*.sln": "*.csproj",
         "*.slnx": "*.csproj"
     },
-    "dotnet.defaultSolution": "Projet informatique L3.slnx"
+    "dotnet.defaultSolution": "Projet informatique L3.slnx",
+    "coq-lsp.check_only_on_request": false
 }
